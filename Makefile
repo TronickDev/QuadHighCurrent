@@ -1,15 +1,13 @@
-ifeq ($(THEOS_PACKAGE_SCHEME),rootless)
-TARGET = iphone:clang:latest:15.0
-else
-TARGET = iphone:clang:14.5:10.0
-export PREFIX = $(THEOS)/toolchain/Xcode11.xctoolchain/usr/bin/
-endif
 ARCHS = arm64 arm64e
-PACKAGE_VERSION = 1.1.2
+TARGET = iphone:clang:15.6:16.1.2
+#TARGET = iphone:clang:14.5:14.0
 
 include $(THEOS)/makefiles/common.mk
 
-TWEAK_NAME = QuadHighCurrent
-$(TWEAK_NAME)_FILES = Tweak.xm
+TWEAK_NAME = FreePIP
+PACKAGE_VERSION = 1.1.2
+
+QuadHighCurrent_FILES = Tweak.x
+QuadHighCurrent_CFLAGS = -fobjc-arc
 
 include $(THEOS_MAKE_PATH)/tweak.mk
